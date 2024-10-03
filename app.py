@@ -9,10 +9,10 @@ def local_css(file_name):
 local_css("styles.css")
 
 # Sidebar Navigation
-from sidebar import sidebar_navigation
-from irrigation import irrigation_monitoring
-from maps import maps_visualization
-from vegetation import vegetation_indices
+from parts.sidebar import sidebar_navigation
+from parts.irrigation import irrigation_monitoring
+from parts.maps import maps_visualization
+from parts.vegetation import vegetation_indices
 
 def main():
     # Use sidebar to navigate between different pages
