@@ -1,45 +1,73 @@
 import streamlit as st
-import folium
-from streamlit_folium import st_folium
+import leafmap.foliumap as leafmap
 
-# Interactive map visualization
 def maps_visualization():
-    st.title("📍 Interactive Maps Visualization")
-    st.write("Use the interactive map below to pinpoint your farm location.")
-
-    # Default coordinates for map center (can be changed)
-    initial_lat, initial_lon = 28.6139, 77.2090
-
-    # Create a folium map centered at the initial coordinates
-    map_ = folium.Map(location=[initial_lat, initial_lon], zoom_start=5)
-
-    # Add an instruction to guide the farmer
-    st.markdown("""
-    **Instructions**: 
-    - Click on the map to select your farm location.
-    - The latitude and longitude will be displayed below the map.
-    - You can use these coordinates for further calculations.
+    st.title("🌍 Farm Maps Analysis")
+    st.write("""
+        This section provides farmers with comprehensive map analysis tools. Use the options below to switch between different map views to better understand your farm's characteristics.
     """)
 
-    # Add a click event to capture coordinates
-    map_.add_child(folium.LatLngPopup())
+    # Unified Map Selector: Radio button to switch between different map views
+    map_type = st.radio(
+        "Select Map View",
+        ("Single Map View", "Split Map Comparison", "3D Terrain Map")
+    )
 
-    # Display the map
-    map_data = st_folium(map_, width=700, height=500)
+    # Render the appropriate map view based on user selection
+    if map_type == "Single Map View":
+        show_single_map()
+    elif map_type == "Split Map Comparison":
+        show_split_map()
+    elif map_type == "3D Terrain Map":
+        show_3d_map()
 
-    # If the user clicked on the map, retrieve the coordinates
-    if map_data and map_data['last_clicked']:
-        latitude = map_data['last_clicked']['lat']
-        longitude = map_data['last_clicked']['lng']
-        st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
+# Function to display a single map with a specific layer (e.g., NDVI)
+def show_single_map():
+    st.subheader("Single Map View")
+    st.write("Visualize a single dataset, such as NDVI or soil moisture, for your farm area.")
 
-        # Show coordinates for further use
-        st.session_state['latitude'] = latitude
-        st.session_state['longitude'] = longitude
+    # Create a single map
+    m = leafmap.Map(center=[28.6139, 77.2090], zoom=5, draw_control=False, measure_control=False)
+    m.add_basemap("HYBRID")
 
-        # Add a button to confirm location selection and go to the irrigation section
-        if st.button("🔄 Use this Location for Irrigation Monitoring"):
-            st.success(f"Location set: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
-            # Redirect to irrigation monitoring page or store this location for later use
-    else:
-        st.warning("Click on the map to select a location.")
+    # Add a layer for NDVI (replace with an actual data source URL)
+    ndvi_url = "https://example.com/ndvi_layer"  # Placeholder URL
+    m.add_tile_layer(url=ndvi_url, name="NDVI", attribution="NDVI Data Source")
+
+    # Display the map in Streamlit
+    m.to_streamlit(width=800, height=600)
+
+# Function to display a split map comparing two datasets (e.g., NDVI and soil moisture)
+def show_split_map():
+    st.subheader("Split Map Comparison View")
+    st.write("Compare two datasets side by side, such as NDVI and soil moisture.")
+
+    # Create a split map with two datasets
+    m = leafmap.Map(center=[28.6139, 77.2090], zoom=5, draw_control=False, measure_control=False)
+    m.add_basemap("HYBRID")
+
+    # Add layers to the left and right of the split map (replace with actual URLs)
+    ndvi_url = "https://example.com/ndvi_layer"  # Placeholder URL for NDVI
+    soil_moisture_url = "https://example.com/moisture_layer"  # Placeholder URL for soil moisture
+
+    # Create split map with NDVI on the left and soil moisture on the right
+    m.split_map(left_layer=ndvi_url, right_layer=soil_moisture_url, name_left="NDVI", name_right="Soil Moisture")
+
+    # Display the map in Streamlit
+    m.to_streamlit(width=800, height=600)
+
+# Function to display a 3D terrain map
+def show_3d_map():
+    st.subheader("3D Terrain Map View")
+    st.write("Explore the terrain and elevation data of your farm area.")
+
+    # Create a 3D map with a terrain layer
+    m = leafmap.Map(center=[28.6139, 77.2090], zoom=5, draw_control=False, measure_control=False)
+    m.add_basemap("ESRI")
+
+    # Add a DEM (Digital Elevation Model) layer (replace with an actual DEM data source)
+    dem_url = "https://example.com/dem_layer"  # Placeholder URL for DEM data
+    m.add_tile_layer(url=dem_url, name="Digital Elevation Model", attribution="DEM Data Source")
+
+    # Display the 3D map in Streamlit
+    m.to_streamlit(width=800, height=600)

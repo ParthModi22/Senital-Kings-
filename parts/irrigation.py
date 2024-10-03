@@ -3,14 +3,15 @@ from utils.utils import get_reference_et, get_actual_et, get_crop_coefficient, c
 
 def irrigation_monitoring():
     st.title("🌿 Irrigation Requirement Monitoring")
-    
-    # Check if coordinates are already selected in the session state
+    st.write("This section provides insights on the irrigation requirements for different crops based on their growth stage and location.")
+
+    # Check if coordinates are already selected in session state from the map section
     if 'latitude' in st.session_state and 'longitude' in st.session_state:
         latitude = st.session_state['latitude']
         longitude = st.session_state['longitude']
         st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
     else:
-        st.warning("Please select your farm location from the 'Maps Visualization' section.")
+        st.warning("Please select your farm location from the 'Farm Maps' section.")
         return
 
     # Input fields for the irrigation monitoring
@@ -34,4 +35,3 @@ def irrigation_monitoring():
                 <h3 style="color:#4caf50;">💦 Irrigation Requirement (IR): {ir:.2f} mm/day</h3>
             </div>
         """, unsafe_allow_html=True)
-

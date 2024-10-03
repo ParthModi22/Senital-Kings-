@@ -1,73 +1,110 @@
 /* Sidebar Style */
 .sidebar .sidebar-content {
-    background-color: #f0f2f6;  /* Light background for sidebar */
-    color: #333;                /* Darker text color */
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Light blue gradient */
+    padding: 20px;
+    color: #333; /* Text color */
+    border-radius: 15px; /* Rounded corners */
 }
 
+/* Style for Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: #2a4d69;             /* Dark blue headings */
+    color: #2a4d69; /* Dark blue headings */
     font-family: 'Arial', sans-serif;
 }
 
+/* Body Text Style */
 body {
     font-family: 'Verdana', sans-serif; 
 }
 
-/* Customize buttons */
+/* Button Customization */
 .stButton>button {
-    background-color: #4caf50;  /* Green background */
-    color: white;               /* White text */
-    border-radius: 12px;        /* Rounded corners */
-    border: 1px solid #4caf50;  /* Border matching background */
+    background: linear-gradient(45deg, #4caf50, #45a049); /* Green gradient */
+    color: white; /* Text color */
+    border-radius: 15px; /* Rounded corners */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add padding for larger buttons */
 }
 
 .stButton>button:hover {
-    background-color: #45a049;  /* Darker green on hover */
+    background: linear-gradient(45deg, #388e3c, #2e7d32); /* Darker green on hover */
 }
 
-/* Center-align content */
+/* Center-align Content */
 .center-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px 0; /* Add margin for spacing */
 }
 
-/* Textbox styling */
+/* Textbox Styling */
 .stTextInput>div>div>input {
-    border: 2px solid #ccc;     /* Light border */
-    border-radius: 8px;         /* Rounded corners */
+    border: 2px solid #ccc; /* Light border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 8px; /* Add padding */
+    font-size: 14px; /* Font size */
 }
 
 .stNumberInput input {
-    border-radius: 8px;         /* Rounded corners */
+    border: 2px solid #ddd; /* Light border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 8px; /* Add padding */
+    font-size: 14px; /* Font size */
 }
 
 /* Customizing the map container */
 .folium-map {
-    border: 2px solid #2a4d69;  /* Border around folium maps */
-    border-radius: 8px;
+    border: 2px solid #2a4d69; /* Border around folium maps */
+    border-radius: 12px; /* Rounded corners */
+    margin-top: 10px;
 }
+
+/* Sidebar section styling */
+.sidebar-section {
+    margin-bottom: 20px; /* Space between sections */
+    padding: 15px;
+    background-color: #f5f5f5; /* Light background */
+    border-radius: 15px; /* Rounded corners */
+}
+
 /* Page title styling */
 h1 {
     text-align: center;
     color: #4caf50;
-}
-
-/* Sidebar styling */
-.sidebar .sidebar-content {
-    background: linear-gradient(135deg, #e2e2e2, #f9f9f9);
-    padding: 20px;
+    font-family: 'Georgia', serif; /* Different font for title */
+    margin-top: 20px;
 }
 
 /* Input box styling */
 input {
     border: 2px solid #ddd;
     border-radius: 10px;
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Increase font size */
 }
 
 /* Button styling */
 .stButton>button {
     background: linear-gradient(45deg, #4caf50, #45a049);
+    color: white;
     border: none;
     border-radius: 15px;
+    padding: 12px 24px; /* Larger button size */
+    font-size: 16px; /* Increase font size */
+}
+
+/* Styling for section titles */
+.section-title {
+    font-size: 24px; /* Increase font size */
+    font-weight: bold; /* Bold text */
+    color: #2a4d69; /* Text color */
+    margin-bottom: 10px; /* Space below */
+}
+
+/* Form and control element styling */
+.st-form {
+    background-color: #f0f2f6;
+    padding: 15px;
+    border-radius: 12px;
 }
