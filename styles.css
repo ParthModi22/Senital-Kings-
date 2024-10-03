@@ -1,3 +1,15 @@
+/* Apply a background image to the entire app */
+body {
+    font-family: 'Verdana', sans-serif;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ-LCwHsyj8qVomSlcpo94iQGCm7jRKATTDQ&s'); /* Replace with your image URL */
+    background-size: cover; /* Make sure the image covers the entire background */
+    background-position: center;
+    background-attachment: fixed; /* Keep the background fixed during scrolling */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
 /* Sidebar Style */
 .sidebar .sidebar-content {
     background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Light blue gradient */
@@ -10,11 +22,6 @@
 h1, h2, h3, h4, h5, h6 {
     color: #2a4d69; /* Dark blue headings */
     font-family: 'Arial', sans-serif;
-}
-
-/* Body Text Style */
-body {
-    font-family: 'Verdana', sans-serif; 
 }
 
 /* Button Customization */
