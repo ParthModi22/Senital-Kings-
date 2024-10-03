@@ -27,6 +27,6 @@ def calculate_cwr(et0, kc):
 def calculate_ir(cwr, actual_et):
     return cwr - actual_et
 
-# Placeholder for a vegetation index value calculation
+# Placeholder function for a vegetation index value calculation
 def get_vegetation_index(lat, lon):
-    return 0.65  # Mocked value for demo
+    return 0.65  # Mocked NDVI value for demo

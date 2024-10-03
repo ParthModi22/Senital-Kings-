@@ -1,4 +1,8 @@
 import streamlit as st
+from parts.sidebar import sidebar_navigation
+from parts.irrigation import irrigation_monitoring
+from parts.maps import maps_visualization
+from parts.vegetation import vegetation_indices
 
 # Load CSS file to apply styles
 def local_css(file_name):
@@ -7,12 +11,6 @@ def local_css(file_name):
 
 # Load the custom CSS file
 local_css("styles.css")
-
-# Sidebar Navigation
-from parts.sidebar import sidebar_navigation
-from parts.irrigation import irrigation_monitoring
-from parts.maps import maps_visualization
-from parts.vegetation import vegetation_indices
 
 def main():
     # Use sidebar to navigate between different pages
@@ -28,3 +26,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
